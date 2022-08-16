@@ -1,20 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
-import suggestionPost from "./suggestionPost.js";
+import storyboard from "./storyboard.js";
 import Cors from "cors";
 
 const app = express();
 app.use(express.json());
 app.use(Cors());
-const port = 3000;
+const port = 8001;
 
 app.get("/", (req, res) => {
   res.send("Hello World! from nodemon");
 });
 
 app.post("/post/create", (req, res) => {
-  const suggestion = req.body;
-  suggestionPost.create(suggestion, (err, data) => {
+  const _storyboard = req.body;
+  storyboard.create(_storyboard, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -24,7 +24,7 @@ app.post("/post/create", (req, res) => {
 });
 
 app.get("/post/allposts", (req, res) => {
-  suggestionPost.find((err, data) => {
+  storyboard.find((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {

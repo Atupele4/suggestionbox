@@ -3,10 +3,11 @@ const db_url = `mongodb+srv://admin:dj5QZdtD6kZCKybs@cluster0.offmgfn.mongodb.ne
 await mongoose.connect(db_url);
 
 
-const suggestionPost = mongoose.Schema({
+const storyboard = mongoose.Schema({
     title: String,
-    problem: String,
-    suggestedSolution: String
+    post: String,
+    status: Number,
+    likes: Number
 },{ timestamps: true });
 
-export default mongoose.model('suggestionpost',suggestionPost)
+export default mongoose.model('storyboard',storyboard)
